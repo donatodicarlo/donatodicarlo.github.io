@@ -37,11 +37,24 @@
             font-family: 'JetBrainsMono', sans;
             font-size: 1rem;
         }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .accordion-item:nth-child(even) {
+            background-color: rgba(240, 245, 250, 0.1);
+        }
+
+        .accordion-item .accordion-button,
+        .accordion-item .accordion-body {
+            background-color: transparent;
+        }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
     <a class="navbar-brand" href="#">Donato Di Carlo</a>
     <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
             data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
@@ -143,37 +156,52 @@
         <div class="container">
             <div class="row">
                 <h2 class="text-center"><strong>About Me</strong></h2>
-                <p class="lead text-center">
-                    I am Assistant Professor in Political Economy at the European Institute of the London School of Economics and the founder/director
-                    of the Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP).
-                    I hold a PhD in European Political Economy from the Max Planck Institute for the Study
-                    of Societies (MPIfG) in Cologne. Before joining Luiss, I was a Max Weber Postdoctoral Fellow
-                    (2020/2021) at the
-                    European University Institute in Fiesole and worked as Senior Researcher at the MPIfG (2020/2023)
-                    and as external
-                    economic advisor to the Cabinet of the Mayor of Rome.
-                    <br/><br/>
-                    My academic research focuses on comparative political economy and public policy issues, with a
-                    specific focus on
-                    industrial relations and wage-setting systems, growth models, industrial policy, economic regulation
-                    and EU integration.
-                    <br/><br/>
-                    In Spring 2023 I founded LUHNIP: a non-partisan, interdisciplinary hub conducting
-                    research, policy advocacy and public engagement activities on issues pertaining to
-                    industrial policy and economic governance in Europe and in Italy.
+                <p class="lead text-justify">
+                    I am <i>Assistant Professor</i> in Political Economy at the European Institute, London School of Economics and Political Science,
+                    and Director of the Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP), an interdisciplinary Policy Hub
+                    advancing research, policy debate, and public engagement on industrial policy and economic governance in Europe and Italy.
+
+                    <br><br/>
+
+                    As a <span class="fw-bold">Comparative Political Economy (CPE)</span> scholar,
+                    my work revolves around three research streams:
+                </p>
+
+                <div class="text-center">
+                    <ol class="d-inline-block text-start">
+                        <li>The political economy of industrial policy;</li>
+                        <li>Continuity and change in European models of capitalism;</li>
+                        <li>Comparative industrial relations and wage-setting systems.</li>
+                    </ol>
+                </div>
+
+                <p class="lead text-justify mt-2">
+                    My work has been published in international journals including:
+                    <i>Governance, Perspectives on Politics, Politics & Society, Regulation & Governance, Socio-Economic Review</i>
+                    and has received awards from the
+                    European Union Studies Association (EUSA), the Council for European Studies (CES), and the Max Planck Institute for the Study of Societies (MPIfG).
+                </p>
+
+                <p class="lead text-justify">
+                    Before joining LSE, I was Lecturer in Political Economy at Luiss Guido Carli in Rome (2023–2024),
+                    Senior Researcher at the Max Planck Institute for the Study of Societies in Cologne (2020–2023),
+                    and a Max Weber Fellow in the Department of Political and Social Sciences at the
+                    European University Institute (2020–2021). I also served as external economic advisor to the
+                    Cabinet of the Mayor of Rome (2021–2023), working at the interface between academic research and economic policy.
+                    I hold a PhD in European Political Economy from the Max Planck Institute for the Study of Societies (2015–2019).
                 </p>
             </div>
 
-            <div class="row gy-3">
+            <div class="row gy-3 mt-3">
                 <div class="col-sm">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title fw-bold">Academic Interests</h4>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Growth Models</li>
-                                <li class="list-group-item">Industrial Policy</li>
-                                <li class="list-group-item">Labour Markets and Wage Setting Systems</li>
+                                <li class="list-group-item">European and Italian Industrial Policy</li>
                                 <li class="list-group-item">European Integration and Economic Governance</li>
+                                <li class="list-group-item">Varieties of Capitalism & Growth Models/Regimes</li>
+                                <li class="list-group-item">Labour Markets and Wage-setting Systems</li>
                             </ul>
                         </div>
                     </div>
@@ -682,7 +710,7 @@
                 </div>
             </div>
 
-            <p class="lead text-center pt-4">Book Chapters</p>
+            <p class="lead text-center mt-5 fw-bold">Book Chapters</p>
             <div class="accordion" id="bookChaptersAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="bookChapter3Heading">
@@ -775,7 +803,7 @@
                 </div>
             </div>
 
-            <p class="lead text-center pt-4">Policy Research and Working Papers</p>
+            <p class="lead text-center mt-5 fw-bold">Policy Research and Working Papers</p>
             <div class="accordion" id="workingPapersAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="workingPaper7Heading">
