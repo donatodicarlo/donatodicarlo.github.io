@@ -70,6 +70,15 @@
             #outreach ul { padding-left: 1.1rem; }
         }
             .bg-light { background-color: #f4f1e9 !important; }
+        .lang-switch { display:flex; align-items:center; gap:.3rem; }
+        .lang-btn { background:none; border:0; color:rgba(255,255,255,.65); font-family:'Lora',serif; font-size:.95rem; line-height:1; cursor:pointer; padding:.1rem .2rem; }
+        .lang-btn:hover { color:#fff; }
+        .lang-btn.active { color:#fff; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+        .lang-sep { color:rgba(255,255,255,.35); }
+        .header-contact { font-size:.95rem; }
+        .header-contact .hc-link { color:rgba(255,255,255,.85); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:1px; }
+        .header-contact .hc-link:hover { color:#fff; border-bottom-color:#fff; }
+        .header-contact .hc-sep { color:rgba(255,255,255,.45); margin:0 .5rem; }
         body { background-color: #F3EEDD !important; color: #1E2A2C; }
         .bg-header { background-color: #2E7C90 !important; }
         .bg-dark { background-color: #16272C !important; }
@@ -81,8 +90,8 @@
         .stream-title { color: #A82412 !important; border-bottom-color: #EBCC2A !important; }
         .accordion-button:not(.collapsed) { color: #A82412 !important; }
         .btn-outline-dark { --bs-btn-border-color:#A82412; --bs-btn-color:#A82412; --bs-btn-hover-bg:#A82412; --bs-btn-hover-border-color:#A82412; --bs-btn-hover-color:#fff; }
-        main a:not(.btn):not(.icon-link) { color: #A82412; }
-        main a:not(.btn):not(.icon-link):hover { color: #EBCC2A; }
+        main a:not(.btn):not(.icon-link), main a.link-dark { color: #0F6C93 !important; }
+        main a:not(.btn):not(.icon-link):hover, main a.link-dark:hover { color: #1C82AE !important; }
     </style>
 </head>
 <body>
@@ -93,21 +102,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
-            <li class="nav-item"><a class="nav-link" href="#policy">Policy</a></li>
-            <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
-            <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
-            <li class="nav-item"><a class="nav-link" href="#outreach">Outreach</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#research" data-i18n="nav_research">Research</a></li>
+            <li class="nav-item"><a class="nav-link" href="#policy" data-i18n="nav_policy">Policy</a></li>
+            <li class="nav-item"><a class="nav-link" href="#awards" data-i18n="nav_awards">Awards</a></li>
+            <li class="nav-item"><a class="nav-link" href="#teaching" data-i18n="nav_teaching">Teaching</a></li>
+            <li class="nav-item"><a class="nav-link" href="#outreach" data-i18n="nav_outreach">Outreach</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacts" data-i18n="nav_contacts">Contacts</a></li>
         </ul>
+        <div class="lang-switch ms-lg-3 mt-2 mt-lg-0">
+            <button type="button" class="lang-btn" data-set-lang="en">EN</button><span class="lang-sep">/</span><button type="button" class="lang-btn" data-set-lang="it">IT</button>
+        </div>
     </div>
 </nav>
 
 <header class="bg-header text-white text-center py-5">
     <img alt="Donato Di Carlo, Profile Picture" class="rounded-circle img-thumbnail mx-auto d-block" src="./images/propic.jpg" style="width:200px;height:200px;object-fit:cover;">
-    <h4 class="mt-3">Assistant Professor in Political Economy<br><i>European Institute, London School of Economics</i></h4>
-    <p class="lead mt-3">Founder and Director<br><i>Luiss Hub for New Industrial Policy (LUHNIP)</i></p>
+    <h4 class="mt-3"><span data-i18n="role">Assistant Professor in Political Economy</span><br><i>European Institute, London School of Economics</i></h4>
+    <p class="lead mt-3"><span data-i18n="founder">Director</span><br><i>Luiss Hub for New Industrial Policy (LUHNIP)</i></p>
     <div class="social-icons mt-4">
         <div class="d-flex justify-content-center gap-4 mb-2">
             <a class="link-light fw-semibold text-decoration-none" href="https://www.lse.ac.uk/people/donato-di-carlo" rel="noopener" target="_blank">LSE <img alt="" height="10" src="./icons/box-arrow-up-right.svg" style="filter: brightness(0) invert(1);" width="10" /></a>
@@ -123,6 +135,11 @@
             <a aria-label="ResearchGate" class="icon-link link-light p-2" href="https://www.researchgate.net/profile/Donato-Di-Carlo-2" rel="noopener" target="_blank"><img alt="" height=24 src="./icons/researchgate.svg" width=24></a>
         </div>
     </div>
+    <div class="header-contact mt-3">
+        <a class="hc-link" href="mailto:d.di-carlo@lse.ac.uk">d.di-carlo@lse.ac.uk</a>
+        <span class="hc-sep">·</span>
+        <a class="hc-link" href="mailto:ddicarlo@luiss.it">ddicarlo@luiss.it</a>
+    </div>
 </header>
 
 
@@ -130,29 +147,29 @@
     <section class="py-5" id="about">
         <div class="container">
             <div class="row">
-                <h2 class="text-center"><strong>About Me</strong></h2>
-                <p class="about-text">
+                <h2 class="text-center"><strong data-i18n="h_about">About Me</strong></h2>
+                <p class="about-text" data-i18n="about1">
                     I am <i>Assistant Professor</i> in Political Economy at the European Institute, London School of Economics and Political Science,
                     and Director of the Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP), an interdisciplinary Policy Hub advancing
                     research, policy debate, and public engagement on industrial policy and economic governance in Europe and Italy.
                 </p>
-                <p class="about-text">
+                <p class="about-text" data-i18n="about2">
                     As a Comparative Political Economy (CPE) scholar, my work revolves around three research streams:
                 </p>
                 <div class="text-center">
                     <ol class="d-inline-block text-start">
-                        <li>The political economy of industrial policy;</li>
-                        <li>Continuity and change in European models of capitalism;</li>
-                        <li>Comparative labour markets and wage-setting.</li>
+                        <li data-i18n="ol1">The political economy of industrial policy;</li>
+                        <li data-i18n="ol2">Continuity and change in European models of capitalism;</li>
+                        <li data-i18n="ol3">Comparative labour markets and wage-setting.</li>
                     </ol>
                 </div>
-                <p class="about-text">
+                <p class="about-text" data-i18n="about3">
                     My work has been published in international journals including:
                     <i>Governance, Perspectives on Politics, Politics &amp; Society, Regulation &amp; Governance, Socio-Economic Review</i>
                     and has received awards from the European Union Studies Association (EUSA), the Council for European Studies (CES),
                     and the Max Planck Institute for the Study of Societies (MPIfG).
                 </p>
-                <p class="about-text">
+                <p class="about-text" data-i18n="about4">
                     Before joining LSE, I was Lecturer in Political Economy at Luiss Guido Carli in Rome (2023–2024),
                     Senior Researcher at the Max Planck Institute for the Study of Societies in Cologne (2020–2023),
                     and a Max Weber Fellow in the Department of Political and Social Sciences at the European University Institute (2020–2021).
@@ -164,25 +181,25 @@
             <div class="row gy-3 mt-3 cards-row justify-content-center">
                 <div class="col-sm">
                     <div class="card h-100"><div class="card-body">
-                        <h4 class="card-title fw-bold">Academic Interests</h4>
+                        <h4 class="card-title fw-bold" data-i18n="card_interests">Academic Interests</h4>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">European and Italian Industrial Policy</li>
-                            <li class="list-group-item">European Integration and Economic Governance</li>
-                            <li class="list-group-item">Varieties of Capitalism &amp; Growth Models/Regimes</li>
-                            <li class="list-group-item">Labour Markets and Wage-setting Systems</li>
-                                <li class="list-group-item">Regulation and Regulatory Governance</li>
-                                <li class="list-group-item">Political Economy of Tourism</li>
+                            <li class="list-group-item" data-i18n="int1">European and Italian Industrial Policy</li>
+                            <li class="list-group-item" data-i18n="int2">European Integration and Economic Governance</li>
+                            <li class="list-group-item" data-i18n="int3">Varieties of Capitalism &amp; Growth Models/Regimes</li>
+                            <li class="list-group-item" data-i18n="int4">Labour Markets and Wage-setting Systems</li>
+                                <li class="list-group-item" data-i18n="int5">Regulation and Regulatory Governance</li>
+                                <li class="list-group-item" data-i18n="int6">Political Economy of Tourism</li>
                         </ul>
                     </div></div>
                 </div>
                 <div class="col-sm">
                     <div class="card h-100"><div class="card-body">
-                        <h4 class="card-title fw-bold">Education</h4>
+                        <h4 class="card-title fw-bold" data-i18n="card_education">Education</h4>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">PhD, <i>Max Planck Institute for the Study of Societies</i><br>Cologne 2019</li>
-                            <li class="list-group-item">Advanced Master in Public Policy, <i>Collegio Carlo Alberto</i><br>Turin 2015</li>
-                            <li class="list-group-item">MSc Political Economy of Europe, <i>London School of Economics</i><br>London 2014</li>
-                            <li class="list-group-item">B.A. Public Administration and Government, <i>University of Teramo</i><br>Teramo 2013</li>
+                            <li class="list-group-item" data-i18n="edu1">PhD, <i>Max Planck Institute for the Study of Societies</i><br>Cologne 2019</li>
+                            <li class="list-group-item" data-i18n="edu2">Advanced Master in Public Policy, <i>Collegio Carlo Alberto</i><br>Turin 2015</li>
+                            <li class="list-group-item" data-i18n="edu3">MSc Political Economy of Europe, <i>London School of Economics</i><br>London 2014</li>
+                            <li class="list-group-item" data-i18n="edu4">B.A. Public Administration and Government, <i>University of Teramo</i><br>Teramo 2013</li>
                         </ul>
                     </div></div>
                 </div>
@@ -192,10 +209,10 @@
 
     <section class="pt-5 pb-5 bg-light" id="research">
         <div class="container">
-            <h2 class="text-center"><strong>Academic Research</strong></h2>
-            <p class="text-center text-muted mb-4">Peer-reviewed articles and book chapters, organised by research stream</p>
+            <h2 class="text-center"><strong data-i18n="h_research">Academic Research</strong></h2>
+            <p class="text-center text-muted mb-4" data-i18n="research_sub">Peer-reviewed articles and book chapters, organised by research stream</p>
 
-            <p class="stream-title">1. Industrial Policy and Regulatory Governance</p>
+            <p class="stream-title" data-i18n="stream1">1. Industrial Policy and Regulatory Governance</p>
             <div class="accordion" id="f1aAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="f1a1Heading">
@@ -210,8 +227,8 @@
                             <p class="text-justify abstract">Across advanced economies, states are reasserting a more directive role in shaping markets. One prominent expression of this shift is the resurgence of industrial policy as a form of interventionist economic governance. This introduction develops a tripartite framework to analyze contemporary industrial policy in terms of goals, instruments, and authority structures, asking for what ends states intervene, through what means, and by and for whom. Applying this lens to Europe and the European Union (EU), the special issue shows how a polity long seen as the archetype of the regulatory state is increasingly departing from this model through a renewed embrace of industrial policy. We identify four ideal-typical phases of EU industrial policy since the postwar era and argue that, since the 2020s, the EU has entered a distinct Transformational Phase. This phase is marked by the geopoliticization of interventionist goals, hybrid fiscal, geoeconomic and regulatory instruments, and a vertical and horizontal decentering of European market interventionism. Together, the introduction and contributions to the special issue offer a conceptual and empirical lens on industrial policy as a defining feature of twenty-first-century activist economic governance.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/gove.70133" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/the-new-politics-of-eu-industrial-policy.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/the-new-politics-of-eu-industrial-policy.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/the-new-politics-of-eu-industrial-policy.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/the-new-politics-of-eu-industrial-policy.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -229,8 +246,8 @@
                             <p class="text-justify abstract">Despite its new-found penchant for market interventionism, the European Union (EU) is often portrayed as lacking the fiscal and administrative capacity to conduct industrial policy. The EU can regulate markets, the conventional wisdom goes, but not steer them in specific directions. In this article, we challenge the notion that regulation and industrial policy are inherently antithetical, arguing instead that the Commission uses its regulatory authority over state aid to indirectly steer member states' industrial policies. We theorize and empirically investigate this rules-as-tools approach to industrial policy through an in-depth, multi-method case study on the transformation of the EU's state aid regime, with a focus on the General Block Exemption Regulation (GBER). Combining original interviews, topic modeling, document analysis, and descriptive statistics, we demonstrate that the Commission has long used state aid regulation not only to restrict but also redirect state aid. Increasingly, it employs these rules to encourage selective interventions in the economy, particularly those supporting the twin transitions of digitalization and decarbonization.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/gove.70084" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/regulatory-means-for-interventionist-ends-gber.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/regulatory-means-for-interventionist-ends-gber.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/regulatory-means-for-interventionist-ends-gber.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/regulatory-means-for-interventionist-ends-gber.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -248,8 +265,8 @@
                             <p class="text-justify abstract">This article examines the political foundations of industrial policy amid the return of state economic interventionism. Comparing the United States' Inflation Reduction Act (IRA) and the European Union's Green Deal Industrial Plan (GDIP), it shows that contrasting industrial policy strategies were ultimately shaped by differences in the two polities' legislative rules. In both cases, geopolitical pressures sparked renewed interest in green industrial policymaking. However, procedural mechanisms for majoritarian decision-making in the U.S. Senate enabled the government to overcome partisan veto players and compelled the design of the IRA as a budgetary instrument centered on fiscal subsidies. By contrast, unanimity requirements in the EU's joint decision-making system prevented the Commission from overcoming Member State veto players in the Council, precluding supranational fiscal instruments and resulting in a regulation-based, decentralized approach via national state aid. The findings contribute to the burgeoning debates on the return of industrial policy and state activism by showing how political institutions contribute to shaping not only the scope but also the form of economic interventionism within different polities.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/gove.70066" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/whats-in-a-polity-economic-interventionism-us-eu.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/whats-in-a-polity-economic-interventionism-us-eu.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/whats-in-a-polity-economic-interventionism-us-eu.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/whats-in-a-polity-economic-interventionism-us-eu.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -267,8 +284,8 @@
                             <p class="text-justify abstract">Within Europe's regulatory state, industrial policy has largely remained within national governments' remit. Yet, a plethora of new supra- and cross-national industrial policy initiatives have recently emerged whereby the Commission proactively engages in pan-European activities to foster innovation and economic development. This article brings the 'Developmental Network States' (DNS) literature into dialogue with EU integration scholarship to explain both the timing of EU industrial policy's rise since the mid-2010s and the variation in forms of EU integration of different industrial policy functions. Our analysis suggests that the Commission increasingly operates four major developmental functions akin to DNSs and aimed at promoting and protecting the single market. Neofunctionalist theories of EU integration explain these momentous shifts. The timing behind the rise of EU industrial policy is best explained as an interplay of functional, cultivated, and political spillovers, driven especially by the Franco-German realignment on pro-EU industrial policy positions since 2016. Variation in the governance forms of integrated EU industrial policy functions is instead explained in terms of the degree of pre-existing integration of extant policies, the low vs high politics nature of the policy domain and the types of externalities attached to the specific policy area.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1080/13501763.2023.2202684" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/europe-first-the-rise-of-eu-industrial-policy-promoting-and-protecting-the-single-market.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/europe-first-the-rise-of-eu-industrial-policy-promoting-and-protecting-the-single-market.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/europe-first-the-rise-of-eu-industrial-policy-promoting-and-protecting-the-single-market.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/europe-first-the-rise-of-eu-industrial-policy-promoting-and-protecting-the-single-market.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -286,15 +303,15 @@
                             <p class="text-justify abstract">Political economy scholarship generally assumes that governments are interested in enforcing economic regulations. Cases of non-enforcement are predominantly studied in the context of developing countries and are chiefly associated with states' deficient institutional capacity. This article casts doubts on these assumptions by showing how governments in advanced democracies manipulate the regulatory regime and generate selective non-enforcement of economic regulations to shape markets at their discretion. We argue that regulatory forbearance becomes an attractive form of industrial policy when governments are prevented from intervening discretionally in markets due to legal obstacles, which they cannot overcome; or when the productive structure of the country makes alternative forms of intervention unviable. Drawing on the study of tax non-enforcement in two most-different cases of strong and weak state capacity such as Germany and Italy, the article theorizes three techniques through which governments manipulate regulatory regimes: legal and organizational sabotage and shirking. By shedding light on the economic logic of forbearance, the article points at non-enforcement as an overlooked mode of regulatory governance and suggests the need to inquire further into governments' strategic agency behind regulatory regimes.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/rego.12382" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/governing-through-non-enforcement-regulatory-forbearance-as-industrial-policy-in-advanced-economies.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/governing-through-non-enforcement-regulatory-forbearance-as-industrial-policy-in-advanced-economies.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/governing-through-non-enforcement-regulatory-forbearance-as-industrial-policy-in-advanced-economies.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/governing-through-non-enforcement-regulatory-forbearance-as-industrial-policy-in-advanced-economies.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p class="stream-title">2. Comparative Study of European Models of Capitalism</p>
+            <p class="stream-title" data-i18n="stream2">2. Comparative Study of European Models of Capitalism</p>
             <div class="accordion" id="f2aAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="f2a1Heading">
@@ -309,8 +326,8 @@
                             <p class="text-justify abstract">This article demonstrates the applicability of the growth model framework at the regional level. Focusing on Italy as a paradigmatic case of persistent regional inequalities, we test two theories of center-periphery relations between Northern and Southern Italy: the dependency theory and the subsidization theory. Using EUREGIO regional input-output tables between 2000 and 2007, we decompose the GDP and GDP growth of Italian regions into final demand components and economic sectors. The results highlight the importance of distinguishing between static and dynamic analyses. The former reveal a greater reliance of the economy of the Southern regions on the public sector, corroborating the subsidization perspective. By contrast, the latter indicate that in 2000–2007 Southern Italy's GDP growth was driven by low value-added exports to Northern regions, buttressing the Gramscian dependency argument. We link changes in regional growth models to the impact of EU fiscal policy rules.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1093/ser/mwag008" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/dependency-or-subsidization-regional-growth-models-italy.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/dependency-or-subsidization-regional-growth-models-italy.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/dependency-or-subsidization-regional-growth-models-italy.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/dependency-or-subsidization-regional-growth-models-italy.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -328,8 +345,8 @@
                             <p class="text-justify abstract">The green transition is fundamentally transforming contemporary economies and societies. This article investigates how European models of capitalism perform and specialize across the green value chain, conceptualized as innovation, manufacturing, services, and deployment, and how national skill formation systems underpin these specializations. Integrating insights from comparative capitalism literatures with descriptive statistics and principal component analysis (PCA), we develop and test expectations about growth regime-specific patterns of green specialization and skill profiles. Our findings reveal marked cross-national variation between green leaders and laggards: Nordic economies characterized by dynamic services and continental manufacturing-based models are frontrunners in the green transition, while Eastern Europe's FDI-led regimes and Southern Europe's demand-led regimes emerge as laggards. Furthermore, PCA results uncover two distinct decarbonization pathways among European green leaders: one group of countries (Austria, Finland, Germany) specializes in green manufacturing, supported by high shares of STEM graduates; another (Denmark, Switzerland, and to a lesser extent Norway and Sweden) focuses on green innovation and dynamic services, sustained by a strong supply of STEM doctorates. This article contributes to political economy debates on the green transition by identifying distinct green specializations and decarbonization pathways across European models of capitalism and by underscoring the growing centrality of high-level STEM skills in the green transition.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/rego.70080" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/the-comparative-political-economy-of-the-green-transition.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/the-comparative-political-economy-of-the-green-transition.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/the-comparative-political-economy-of-the-green-transition.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/the-comparative-political-economy-of-the-green-transition.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -347,8 +364,8 @@
                             <p class="text-justify abstract">This chapter traces the evolution of Germany's export-led growth regime across three distinct phases, focusing on the interplay between the growth regime and governments' economic and social policy reforms. In the first phase (1990–2007), post-reunification challenges led to wage restraint, fiscal consolidation, and labor market dualization to restore competitiveness and strengthen exports. The second phase (2007–2019) saw a partial rebalancing, with labor market reregulation and moderate public investment addressing structural weaknesses. In the third phase (2020 onward), crises like COVID-19 and the energy shock prompted a shift toward interventionist industrial policy and Keynesian fiscal measures. These phases underscore how economic policies have evolved to sustain Germany's export-driven model amidst shifting pressures and priorities.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1093/9780198947516.003.0002" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/germany-adjustments-of-an-export-led-growth-regime.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/germany-adjustments-of-an-export-led-growth-regime.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/germany-adjustments-of-an-export-led-growth-regime.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/germany-adjustments-of-an-export-led-growth-regime.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -366,8 +383,8 @@
                             <p class="text-justify abstract">Since the introduction of the euro, German growth has been primarily based on exports. Signs of an exhaustion of Germany's export-led growth model were already evident before the energy crisis of 2022–23, which hit the country hard. German elites could have capitalized on the shock to rebalance their growth strategy. But the opposite happened: the government's adjustment strategy has aimed at doubling down on export-led growth and protecting the core export industries. This article investigates the politics of Germany's economic policymaking in hard times. We show that the government's economic policy responses were driven largely by an export sector growth coalition led by cross-class alliances in the chemical, metalworking, and engineering sectors. In contrast to previous corporatist decision-making, which aimed to include broader societal concerns in peak-level concertation, German corporatism has undergone a functional transformation toward the predominance of export sector distributive coalitions. This article's findings contribute to the emerging literature on the politics of growth models in comparative political economy.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/00323292241292920" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/growth-coalitions-within-a-corporatist-setting-how-manufacturing-interests-dominated-the-german-response-to-the-energy-crisis.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/growth-coalitions-within-a-corporatist-setting-how-manufacturing-interests-dominated-the-german-response-to-the-energy-crisis.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/growth-coalitions-within-a-corporatist-setting-how-manufacturing-interests-dominated-the-german-response-to-the-energy-crisis.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/growth-coalitions-within-a-corporatist-setting-how-manufacturing-interests-dominated-the-german-response-to-the-energy-crisis.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -385,8 +402,8 @@
                             <p class="text-justify abstract">European welfare states have experienced a binary transformation characterized by recalibration of traditional social protection programs and expansion of employment-oriented social policies, favoring the emergence of dual-earner families. This article sheds a new light on the pathways leading to these transformations in continental Europe. Theoretically, we characterize continental European welfare states as a configuration of complementary and interacting labor market and social policy provisions. We conjecture that such welfare state types are prone to evolve through a sequential process of institutional change where new social policy provisions emerge to correct and enhance the effectiveness of previously implemented labor market policies in pursuit of novel policy objectives. The timing and pace of this sequence is mediated by governments' cognitive orientations and their responsiveness toward domestic societal interests. Through a qualitative comparative process analysis, we find evidence of our theorized three-pronged sequence of institutional change in the Netherlands, Germany, and Italy.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/00323292241252261" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/the-continental-social-investment-turn.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/the-continental-social-investment-turn.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/the-continental-social-investment-turn.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/the-continental-social-investment-turn.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -404,8 +421,8 @@
                             <p class="text-justify abstract">Comparative political economy scholarship struggles to categorise Italy's model of capitalism between a mixed-market economy and a hybrid, stagnant economic system. To enhance our understanding of the Italian political economy, this article employs the analytical framework of growth regimes to study Italy's regional economic systems. Our analysis indicates that Italy can hardly be defined as a 'national growth regime' due to the presence of two diametrically opposed regional growth regimes: Northern regions conform to a manufacturing-based, export-led growth regime supported by competitiveness-enhancing territorial institutions; southern regions conform to a particular variety of the consumption-led growth regime, that is, an administrative Keynesianism regime, which we theorise to typify a regime where growth and employment are systematically dependent on the state's role of employer of last resort, the state's consumption-enhancing social policies and economic forbearance of labour and corporate tax regulations. The article suggests that studying regional growth regimes is desirable when marked internal diversity in economic outcomes or productive structures exists across regions within (generally larger) countries, and when subnational governments have powers to develop major own institutions/policies in support of regional growth regimes.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1080/13563467.2024.2336515" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/italys-two-tiered-growth-regime.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/italys-two-tiered-growth-regime.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/italys-two-tiered-growth-regime.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/italys-two-tiered-growth-regime.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -423,8 +440,8 @@
                             <p class="text-justify abstract">This article examines recent developments in Italy's economic and fiscal policymaking. It does so by contextualising the 2023 changes in the Italian National Recovery and Resilience Plan (NRRP) within three broader aspects which have characterised the Italian political economy: (1) the country's conservative fiscal trajectory inside the monetary union (EMU); (2) the expansionary economic policies pursued in the face of both the pandemic and energy crises; (3) the peculiar characteristics of Italy's 'dual-hybrid economy'. The article posits that, since the EMU, Italy has continuously run primary budget surpluses higher than its EMU peers. Only since Covid-19, and with the relaxation of EMU constraints, has Italy's fiscal stance turned expansionary. This has allowed space for various socioeconomic policies to partially shield households and firms from the crises' fallout. However, with a return to fiscal conservatism, the NRRP now represents the only game in town to try and address Italy's dual hybridity characterised by weak state capacity and supply-side institutional inconsistencies as well as two diametrically opposed regional growth regimes in the North and the South.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1080/23248823.2024.2337477" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/constrained-economic-policy-in-italys-dual-hybrid-economy.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/constrained-economic-policy-in-italys-dual-hybrid-economy.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/constrained-economic-policy-in-italys-dual-hybrid-economy.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/constrained-economic-policy-in-italys-dual-hybrid-economy.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -442,8 +459,8 @@
                             <p class="text-justify abstract">Despite being one of the world's major internationally traded services, tourism remains neglected within debates on European integration and growth models. We highlight the rise of tourism-led growth in southern Europe and argue that the process of European integration has been a double-edged sword, simultaneously incentivizing and forcing southern European economies to reap their comparative advantage in tourism. While European integration has created the preconditions for the expansion of intra-European tourism, monetary integration pre-empts macroeconomic management. Since the eurozone crisis, internal devaluation and fiscal austerity have suppressed the domestic growth drivers, inducing these governments towards an export-led growth strategy. We document the emergence of unprecedented tourism-related current account surpluses in southern Europe, driven strongly by tourism imports from the EMU core countries and the UK. Thus, while different export-led growth strategies now coexist in the EMU, southern Europe's excessive reliance on international tourism for growth comes with severe pitfalls.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/jcms.13368" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/blessing-or-curse-the-rise-of-tourism-led-growth-in-europes-southern-periphery.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/blessing-or-curse-the-rise-of-tourism-led-growth-in-europes-southern-periphery.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/blessing-or-curse-the-rise-of-tourism-led-growth-in-europes-southern-periphery.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/blessing-or-curse-the-rise-of-tourism-led-growth-in-europes-southern-periphery.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -461,8 +478,8 @@
                             <p class="text-justify abstract">Public investment spending declined steadily in advanced economies during the last three decades. Germany is a case in point where the aggregate decline coincided with growing inequality in investments across districts. What explains the variation in local investment spending? We assembled a novel data set to investigate the effects of structural constraints and partisanship on German districts' investment spending from 1995 to 2018. We find that the lack of fiscal and administrative capacity significantly influences local investment patterns. Yet, within these constraints, partisanship matters. Conservative politicians tend to prioritize public investment more than the left. This is especially the case when revenues from local taxes are low. As the fiscal conditions improve, left-wing politicians increase investment more strongly and hence the difference between the left and the right disappears. Our findings are indicative of how regional economic divergence can emerge even within cooperative federal systems and show that, even when decision-makers operate under various institutional and structural constraints, partisanship matters for how these actors allocate discretionary spending.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1093/ser/mwac026" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/the-constrained-politics-of-local-public-investments-under-cooperative-federalism.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/the-constrained-politics-of-local-public-investments-under-cooperative-federalism.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/the-constrained-politics-of-local-public-investments-under-cooperative-federalism.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/the-constrained-politics-of-local-public-investments-under-cooperative-federalism.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -480,14 +497,14 @@
                             <p class="text-justify abstract">This chapter explores the transformation of Cassa Depositi e Prestiti (CDP) from a small Directorate-General within the Treasury to a full-fledged National Development Bank charged with channeling credit toward small firms and Mid-Caps, financing infrastructural projects, providing patient liquidity to the Treasury and equity investment to strategic firms. After a brief historical excursus, the chapter focuses in particular on two watershed moments in the history of CDP: the privatization in 2003 and the sovereign debt crisis. Both junctures paved the way to a substantial expansion and diversification of CDP's activities in support of the Italian economy. Italy provides an ideal vantage point to explore the relationship between NDBs and their sovereigns due to the unique mismatch between the financial strength of CDP, funded by postal savings, and the financial needs of the cash-stripped Italian sovereign, burdened by an enormous public debt.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1093/oso/9780198859703.003.0006" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="https://academic.oup.com/book/39651/chapter/339625302" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Get the work here</a>
+                                <a href="https://academic.oup.com/book/39651/chapter/339625302" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_get">Get the work here</a>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p class="stream-title">3. Comparative Labour Markets and Wage-Setting</p>
+            <p class="stream-title" data-i18n="stream3">3. Comparative Labour Markets and Wage-Setting Systems</p>
             <div class="accordion" id="f3aAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="f3a5Heading">
@@ -502,8 +519,8 @@
                             <p class="text-justify abstract">This article compares the responses of the governments and social partners in Italy and Spain to the inflation crisis of 2021–2023. Faced with a common exogenous shock and sharing a comparable institutional setting in the labour market, the two countries' responses to the inflation crisis differed substantially with regard to the policy mode of crisis response and the types of policy intervention. First, social partners' involvement was far more significant in Spain, where peak-level agreements were signed setting a three-year trajectory for negotiated wage increases. In contrast, Italian governments proceeded unilaterally, with no attempts at collective bargaining coordination. Secondly, while the Italian government disbursed more fiscal resources through targeted compensatory measures, the Spanish government relied primarily on energy price controls and minimum wage revaluation, with lower overall fiscal expenditure. Finally, the distribution of inflation costs across population groups differed, with inflation in Spain being lower and having less regressive distributional effects than in Italy. We attribute the differing policy responses to the different partisan compositions and ideological orientations of the two governments.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/10242589241306738" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/fighting-with-blunted-tools-inflation-southern-europe.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/fighting-with-blunted-tools-inflation-southern-europe.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/fighting-with-blunted-tools-inflation-southern-europe.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/fighting-with-blunted-tools-inflation-southern-europe.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -521,8 +538,8 @@
                             <p class="text-justify abstract">Monetary and financial integration has been shown to increase the pressure on states to liberalize social and labor market policies. If structures do not come with instruction sheets, how do monetary regime pressures translate into policy? Through a case study of the euro area, we show that central banks play an underappreciated role in this process. Using mixed methods to analyze a large amount of data, including the complete corpus of speeches, we trace the evolution of the European Central Bank's advocacy for structural reforms between 1999 and 2019. To explain the ECB's activism in a policy area beyond its mandate, we theorize the ECB as navigating a dilemma between governability and legitimacy. Handed a monetary regime under which flexible labor markets were seen as a condition for governability, the ECB saw no alternative but to push governments toward structural reforms, despite the reputational risks. The ECB ended its advocacy when increasing political backlash coincided with a structural regime shift from an inflationary to a deflationary environment.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1017/S1537592723002992" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/structure-agency-and-structural-reform-the-case-of-the-european-central-bank.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/structure-agency-and-structural-reform-the-case-of-the-european-central-bank.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/structure-agency-and-structural-reform-the-case-of-the-european-central-bank.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/structure-agency-and-structural-reform-the-case-of-the-european-central-bank.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -540,8 +557,8 @@
                             <p class="text-justify abstract">We analyse wage developments in Germany during the inflation shock years of 2021–2023 from three perspectives: cost of living, supply-side cost pressure, and relational. With an export-led growth model, Germany is dependent on a favourable real effective exchange rate. Because of its above-average exposure to the energy crisis and low unemployment, Germany was particularly vulnerable to strong wage demands, putting at risk its cost competitiveness. In response to the inflation crisis, moderate collective bargaining outcomes have resulted from widespread use of one-off payments, longer duration of collective agreements, and 'zero-month' clauses, which have delayed wage increases. As in all other eurozone countries, employees have suffered real wage losses, but nominal wage increases at the lower end of the labour market fared better than average. Major competitiveness shifts have occurred in the eurozone, particularly to the detriment of Eastern European countries and the Baltics, but not Germany.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/10242589241300114" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/shielding-competitiveness-germanys-wage-policy-during-the-inflation-shock-years-in-comparative-perspective.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/shielding-competitiveness-germanys-wage-policy-during-the-inflation-shock-years-in-comparative-perspective.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/shielding-competitiveness-germanys-wage-policy-during-the-inflation-shock-years-in-comparative-perspective.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/shielding-competitiveness-germanys-wage-policy-during-the-inflation-shock-years-in-comparative-perspective.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -559,8 +576,8 @@
                             <p class="text-justify abstract">This special issue analyses governments' and social partners' responses to the cost-of-living crisis of 2021–2023, and dynamics of coordination and conflict underlying them. The study of inflation responses needs updating. First, because compared to the 1970s–1980s, the recent inflation crisis was hardly intensified by high wage demands. Secondly, because industrial relations and collective bargaining institutions have over the last three decades undergone liberalisation reforms that have eroded coordination capacities. Contributions to this special issue show cross-country variation in real wage dynamics, inflation's distributional impacts and governments' policies to tackle them. The interaction between government policies, collective bargaining institutions and social partners' strategies largely accounts for this variation. In most cases, governments no longer coordinate with social partners nor use them to enforce wage restraint to internalise inflation shocks. Rather, governments actively manage inflation through direct intervention, framing policies and steering them to either shield competitiveness, support domestic demand or reduce inequalities.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/10242589251324455" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/introduction-conflict-and-coordination-cost-of-living-crisis.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/introduction-conflict-and-coordination-cost-of-living-crisis.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/introduction-conflict-and-coordination-cost-of-living-crisis.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/introduction-conflict-and-coordination-cost-of-living-crisis.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -578,8 +595,8 @@
                             <p class="text-justify abstract">This special issue (SI) brings the industrial relations scholarship on the public sector into dialogue with the comparative political economy (CPE) literature on growth models/regimes. While the former has paid great attention to the public sector, in CPE the public sector has been analysed less, and mostly as subaltern to the export-sector's actors, interests and institutions. We posit that the public sector matters for CPE in its own right for three reasons. First, the state remains today the single largest employer in virtually every European economy, providing incomes to a large segment of the middle class. Second, public employers' wage bill, one of the largest items of governments' current expenditures, is funded by the taxpayers. Hence, public sector wage policy is fiscal policy, ultimately pursued by public/political employers. Third, public employers are simultaneously public managers and political sovereigns acting in the shadow of hierarchy. Case-study contributions to the SI detail how these insights matter within different European growth regimes: (1) the Mediterranean demand-led growth regime (France, Italy, Spain and Portugal), (2) the German export-led growth regime, (3) the Nordic balanced growth regime (Denmark and Sweden) and (4) the FDI-led Eastern European growth regime (Czechia and Slovakia).</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/09596801231218673" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/the-new-political-economy-of-public-sector-wage-setting-in-europe-introduction-to-the-special-issue.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/the-new-political-economy-of-public-sector-wage-setting-in-europe-introduction-to-the-special-issue.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/the-new-political-economy-of-public-sector-wage-setting-in-europe-introduction-to-the-special-issue.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/the-new-political-economy-of-public-sector-wage-setting-in-europe-introduction-to-the-special-issue.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -597,8 +614,8 @@
                             <p class="text-justify abstract">This paper analyzes the role of public sector wage-setting (PSWS) in Mediterranean countries before and after the Eurozone crisis. Extant literature suggests public sector wage inflation to be the norm in these countries due to the lack of institutional preconditions for wage restraint and the role of PSWS in shoring up the publicly financed domestic demand-led growth regime. Yet, the cases of France, Italy, Portugal and Spain do not neatly fit these predictions, showing instead notable cross-country and intra-country diachronic variation. We provide an alternative account by treating PSWS as fiscal policy under EMU. Variation in PSWS outcomes before the Eurozone crisis is best explained in terms of the institutions governing PSWS. In France and Portugal, PSWS is highly centralized at the national level, and a strong Finance Ministry plays a central role in the oversight of PSWS to ensure budgetary discipline. To the contrary, Italy and Spain underwent processes of disorganized decentralization of PSWS through the 1990s and 2000s, leading to fragmented, and often clientelist, practices resulting in disorderly inflationary wage increases across the country. After the sovereign debt crisis, all countries relied on restrictive PSWS to support internal devaluation and fiscal adjustment, though with different intensity related to the country-specific problem load and external constraints.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1177/09596801231183787" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/same-but-different-the-mediterranean-growth-regime-and-public-sector-wage-setting-before-and-after-the-sovereign-debt-crisis.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/same-but-different-the-mediterranean-growth-regime-and-public-sector-wage-setting-before-and-after-the-sovereign-debt-crisis.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/same-but-different-the-mediterranean-growth-regime-and-public-sector-wage-setting-before-and-after-the-sovereign-debt-crisis.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/same-but-different-the-mediterranean-growth-regime-and-public-sector-wage-setting-before-and-after-the-sovereign-debt-crisis.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -616,8 +633,8 @@
                             <p class="text-justify abstract">Die angebotsseitigen Preisschübe seit Mitte des Jahres 2021 haben Sorgen vor der Entstehung einer Lohn-Preis-Spirale geweckt und neue Runden korporatistischer Konzertierung auf den Plan gerufen. Wir argumentieren auf Grundlage einer sektoralen und ländervergleichend angelegten Betrachtung der produktivitätsbereinigten Arbeitskostenauftriebe zwischen der Gründung der Währungsunion und dem Eintritt in die Pandemiekrise, dass Deutschland aufgrund der Kumulation sektoraler lohndämpfender Eigenschaften ein unwahrscheinlicher Fall für eine Lohn-Preis-Spirale ist. Da diese Eigenschaften aber nicht typisch für alle Eurozonenländer, sondern vielmehr exzeptionell sind, könnten im Euroraum länderspezifische, unterschiedlich ausgeprägte Lohn-Preis-Spiralen entstehen. Die Verstetigung unterschiedlicher Inflationsniveaus würde die Eurozone vor eine schwere Belastungsprobe stellen.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.3790/sfo.72.5.397" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/die-sektorale-logik-der-deutschen-lohnzuruckhaltung.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/die-sektorale-logik-der-deutschen-lohnzuruckhaltung.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/die-sektorale-logik-der-deutschen-lohnzuruckhaltung.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/die-sektorale-logik-der-deutschen-lohnzuruckhaltung.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -635,8 +652,8 @@
                             <p class="text-justify abstract">Cross-country variation in the outcomes of public sector wage-setting (PSWS) persists in Europe. Received wisdom from the neo-corporatist scholarship attributes it to the presence/absence of centralized or co-ordinated wage-setting regimes. This article challenges the conventional view by analysing PSWS through the lens of the common-pool problem of public finance and special-interest politics. Given the structure of political incentives and the use of fiscal money by public employers, PSWS tends to be inherently inflationary. Yet, the article posits that the extent to which wage inflation occurs in the public sector hinges on the institutional properties of PSWS governance systems. Systematic wage restraint occurs within systems where PSWS authority is delegated to a state actor, either the Finance Ministry or an independent agency, with an organizational mandate and powers to ensure PSWS be conducted in the general interest rather than in response to public sector groups' narrow interests. The argument is demonstrated by leveraging an original combination of most-similar and most-different case studies combined with archival research and elite interviews. The findings advance our understanding of the political economy of wage restraint in Europe and highlight the key role state actors and institutional structures play within growth regimes.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1080/13501763.2022.2036791" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/beyond-neo-corporatism-state-employers-and-the-special-interest-politics-of-public-sector-wage-setting.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/beyond-neo-corporatism-state-employers-and-the-special-interest-politics-of-public-sector-wage-setting.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/beyond-neo-corporatism-state-employers-and-the-special-interest-politics-of-public-sector-wage-setting.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/beyond-neo-corporatism-state-employers-and-the-special-interest-politics-of-public-sector-wage-setting.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -654,8 +671,8 @@
                             <p class="text-justify abstract">The mandate of the European Central Bank (ECB) does not extend to labor market and social policies at the national level. Why, despite the reputational costs, did the ECB act as a staunch advocate of structural labor market reforms from 1999 through 2015? We discuss this question through the theoretical lens of Karl Polanyi's The Great Transformation. Although Polanyi has been a key reference point for the debate on the social consequences of European economic and monetary integration, one of his key insights has received surprisingly little attention, that central banks have the power to mitigate the impact of international economic integration on domestic social protection. Polanyi regarded central banks, much like trade unions, as national-level institutions of non-market coordination, acting as a protective buffer against the functional pressures of the fixed-exchange-rate monetary regime that was the international gold standard. By contrast, the ECB, as a supranational central bank, embodies these functional pressures. This helps explain why, rather than protecting existing social structures against the logic of the fixed-exchange-rate monetary regime, the ECB has sought to protect the monetary regime by going out of its way to re-shape labor market institutions at the national level.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1007/s41358-022-00322-6" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/planning-laissez-faire-supranational-central-banking-and-structural-reforms.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/planning-laissez-faire-supranational-central-banking-and-structural-reforms.ris" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/planning-laissez-faire-supranational-central-banking-and-structural-reforms.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/planning-laissez-faire-supranational-central-banking-and-structural-reforms.ris" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -673,8 +690,8 @@
                             <p class="text-justify abstract">German public sector wage restraint has been explained through the presence of a specific type of inter-sectoral wage coordination in the industrial relations system, that is, export sector-led pattern bargaining. First, as a literature-assessing exercise, this paper reviews the literature in industrial relations and comparative political economy (CPE) and finds that (i) the origins and mechanics of inter-sectoral wage coordination through pattern bargaining have never been laid out clearly; (ii) that the mechanisms of the pattern bargaining thesis have never been tested empirically; and (iii) that the CPE literature reveals an export-sector bias. Second, as a theory-testing exercise, hoop tests are performed to verify the pattern bargaining hypothesis. The key finding is that Germany cannot be considered a case of export sector-driven pattern bargaining, opening a new research agenda for the study of public sector wage setting centred on public sector employment relations, public finance, public administrations and the politics of fiscal policy.</p>
                             <p class="mb-0 btn-row">
                                 <a href="https://doi.org/10.1111/irj.12288" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">DOI</a>
-                                <a href="./resources/peer-reviewed-journals/understanding-wage-restraint-in-the-German-public-sector-does-the-pattern-bargaining-hypothesis-really-hold-water.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="./resources/peer-reviewed-journals/understanding-wage-restraint-in-the-German-public-sector-does-the-pattern-bargaining-hypothesis-really-hold-water.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download Citation</a>
+                                <a href="./resources/peer-reviewed-journals/understanding-wage-restraint-in-the-German-public-sector-does-the-pattern-bargaining-hypothesis-really-hold-water.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="./resources/peer-reviewed-journals/understanding-wage-restraint-in-the-German-public-sector-does-the-pattern-bargaining-hypothesis-really-hold-water.bib" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_cite">Download Citation</a>
                             </p>
                         </div>
                     </div>
@@ -685,7 +702,7 @@
 
     <section class="py-5" id="policy">
         <div class="container">
-            <h2 class="text-center"><strong>Policy Research and Reports</strong></h2>
+            <h2 class="text-center"><strong data-i18n="h_policy">Policy Research and Reports</strong></h2>
             <div class="accordion" id="policyAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="pol2Heading">
@@ -699,7 +716,7 @@
                             <p class="mb-0"><i>Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP), 2026</i></p>
                             <p class="text-justify abstract mt-3">Turning Ambition into Action: Lessons from the Italian National Recovery and Resilience Plan, the third LUHNIP flagship report, orchestrated by Donato Di Carlo and coordinated by Alessia Aspide and Lorenzo Mascioli with contributions by Gabriele Beretta and Camilla Locatelli, examines how Italy is governing and delivering one of the most consequential public investment programmes in its post-war history. The report advances four overarching findings. First, Italy's NRRP allocates a substantial share of resources to large-scale infrastructure, especially transport, while industrial policy is almost entirely absent, a striking gap for the Eurozone's second manufacturing economy. Second, NRRP governance has grown more centralised over time: the 2023 reform consolidated power within the Presidency of the Council at the expense of technical expertise and the participation of subnational actors and stakeholders, a centralising tendency shared with France and Germany but not Spain. Third, the more concrete territorial risk is not the Centre-North/South divide but the intensification of inequalities within the South itself, since the plan's aggregate Mezzogiorno earmarking allows resources to cluster in institutionally stronger, larger cities. Fourth, implementation gaps are not explained by territorial differences in institutional capacity but by project design and governance: smaller projects, projects refinanced from pre-existing pipelines, projects overseen by the Presidency of the Council, and projects executed by central state actors all complete faster. Drawing on comparative analysis of Italy, France, Germany and Spain and on granular project-level data, the report concludes that Italy's implementation difficulties are real but not geographically predetermined; they are mediated by how interventions are designed and which institutions govern them.</p>
                             <p class="mb-0 btn-row">
-                                <a href="./resources/policy/turning-ambition-into-action-nrrp-2025.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
+                                <a href="./resources/policy/turning-ambition-into-action-nrrp-2025.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
                             </p>
                         </div>
                     </div>
@@ -716,7 +733,7 @@
                             <p class="mb-0"><i>Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP), 2025</i></p>
                             <p class="text-justify abstract mt-3">The LUHNIP Report on Italy's Industrial Policy 2025, coordinated by Donato Di Carlo and Lorenzo Moretti, offers a multifaceted analysis of industrial policy in Italy at a time marked by the return of state intervention, shifting European economic governance, and heightened geopolitical and macroeconomic constraints. It brings together political economists, economists and policy analysts from leading European and international research institutions. The report advances three overarching findings. First, Italy suffers from a persistent governance deficit: the absence of a clear political vision has produced a fragmented policy architecture, with overlapping instruments, weak coordination across administrations, and a near-complete lack of systematic evaluation. Second, Italian industrial policy has relied largely on horizontal, untargeted and semi-automatic instruments, particularly subsidies and tax credits, an approach ill-suited to steering structural transformation or meeting different regions' industrial needs. Third, Italy's deep structural and territorial heterogeneity renders a uniform, one-size-fits-all industrial policy ineffective, tending to reinforce existing divides rather than activate new sources of competitiveness. Empirical chapters trace the parliamentary politics of industrial policy since 1948, review policy instruments from 2006 to 2024, and analyse competitiveness and comparative advantages across sectors and regions, showing an export strength concentrated in the North alongside underexploited potential elsewhere. On this basis, the report advocates a shift from expanding the volume of subsidies toward a more selective, evidence-based and territorially differentiated industrial policy, centred on a limited set of strategic instruments, stronger coordination across levels of government, systematic monitoring and evaluation, and tailored interventions that consolidate existing comparative advantages and activate latent ones.</p>
                             <p class="mb-0 btn-row">
-                                <a href="./resources/policy/italy-industrial-policy-report-2025.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
+                                <a href="./resources/policy/italy-industrial-policy-report-2025.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
                             </p>
                         </div>
                     </div>
@@ -733,7 +750,7 @@
                             <p class="mb-0"><i>Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP), 2024</i></p>
                             <p class="text-justify abstract mt-3">The EU Industrial Policy Report 2024, coordinated by Donato Di Carlo, examines the challenges facing the European Union amid geopolitical shifts, economic transformation and the environmental transition. The report contributes to the debate on the future of EU industrial policy by bringing together an interdisciplinary team of legal scholars, political scientists, political economists, economists, economic geographers, company managers and policy practitioners. It is organised around four thematic pillars: the legal foundations and accountability of EU industrial policy; its governance and inter-institutional coordination; territorial inequalities and the spatial dimension of industrial policy; and sectoral policies for strategic autonomy and the twin transition. Across thirteen chapters, contributors trace the historical trajectory of EU industrial policy and Europe's struggle to remain competitive in high-tech sectors; analyse the fragmented legal framework and the role of adjacent fields such as competition and state aid; and assess democratic accountability and the European Parliament's oversight role. Further chapters examine the growing use of state aid and the risk of subsidy races between Member States, the governance of financial resources across the Commission, the ECB and the EIB, and the danger of widening core-periphery divides in green and digital investment. Others address the integration of industrial and cohesion policy, regional dynamics of green and digital innovation, skills shortages, digital and energy dimensions of the twin transition, and defence industrial policy. The concluding chapter synthesises the challenges of competitiveness and economic security, offering a strategic vision for revitalising the Single Market.</p>
                             <p class="mb-0 btn-row">
-                                <a href="./resources/policy/eu-industrial-policy-report-2024.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
+                                <a href="./resources/policy/eu-industrial-policy-report-2024.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
                             </p>
                         </div>
                     </div>
@@ -750,8 +767,8 @@
                             <p class="mb-0"><i>Jacques Delors Institute, Policy Paper No. 307 (2024)</i></p>
                             <p class="text-justify abstract mt-3">This joint JDI-LUHNIP Policy Paper addresses the pressing issue of fragmentation within the EU Single Market resulting from the growing use of state aid by Member States. It provides an in-depth analysis of three key domains of the EU state aid regime, namely aid under the General Block Exemption Regulation (GBER), aid for Important Projects of Common European Interest (IPCEIs), and aid under the Temporary Frameworks introduced to respond to the COVID-19 pandemic and the energy crisis. The analysis reveals significant cross-country variation in both the levels and composition of national state aid across these three domains. The lack of supranational fiscal and political capacity to govern state aid in Europe exacerbates disparities among Member States, leading to an uneven subsidy race. To address these challenges, the paper proposes several policy solutions: phasing out temporary crisis frameworks, consolidating permanent state aid instruments such as GBER aid and IPCEIs, and strengthening the IPCEI instrument with an enhanced role for the European Commission and common funding mechanisms.</p>
                             <p class="mb-0 btn-row">
-                                <a href="./resources/policy/together-we-trade-divided-we-aid.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="https://institutdelors.eu/en/publications/together-we-trade-divided-we-aid/" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Read online</a>
+                                <a href="./resources/policy/together-we-trade-divided-we-aid.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="https://institutdelors.eu/en/publications/together-we-trade-divided-we-aid/" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_read">Read online</a>
                             </p>
                         </div>
                     </div>
@@ -768,8 +785,8 @@
                             <p class="mb-0"><i>Istituto Affari Internazionali, IAI Papers 24|13 (2024)</i></p>
                             <p class="text-justify abstract mt-3">After analysing strengths and weaknesses in the United States and European Union's digital value chains, this paper compares these countries' industrial policy strategies in the semiconductor industry. We study the characteristics of the US CHIPS Act and the EU Chips Act by analysing the protagonists, objectives, instruments, conditionalities, and beneficiaries of these industrial policy initiatives. The EU has major vulnerabilities across the entire value chain. The United States is in a stronger position, but it is increasingly challenged by China's fast expanding capabilities. Both industrial policy initiatives focus predominantly on boosting the capacity for intermediate products. The United States employs a centralized model, with robust funding for direct subsidies and stringent conditionalities, including on labour standards and domestic production mandates. Conversely, the European Union relies on a decentralized approach where the European Commission operates mostly as an orchestrator of cross-country and cross-sectoral production networks. A primary role is assigned to member states which provide targeted funding to firms under the framework of the Important Projects of Common European Interest. The EU's conditions are notably less stringent, which may impact the effectiveness of its strategy. The analysis highlights the EU's need for increased supranational funding for digital industrial policy to strengthen its position between global leaders and emerging powers.</p>
                             <p class="mb-0 btn-row">
-                                <a href="./resources/policy/adjusting-semiconductors-us-eu.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="https://www.iai.it/en/publications/c03/adjusting-new-geopolitical-realities-semiconductors-industrial-policy-us-and-eu" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Read online</a>
+                                <a href="./resources/policy/adjusting-semiconductors-us-eu.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="https://www.iai.it/en/publications/c03/adjusting-new-geopolitical-realities-semiconductors-industrial-policy-us-and-eu" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_read">Read online</a>
                             </p>
                         </div>
                     </div>
@@ -786,8 +803,8 @@
                             <p class="mb-0"><i>LUHNIP Working Paper Series 1/2023</i></p>
                             <p class="text-justify abstract mt-3">The German government has taken decisive actions in response to the dual economic shocks linked to the Covid-19 pandemic and Russian gas supplies' cut-off, with the main objective of protecting its export-oriented industrial economy. By engaging in 'competitive corporatism', the coalitional government has worked closely with the social partners, especially representatives from the chemical and metalworking-engineering export sectors, to restore domestic firms' cost competitiveness while providing social compensation to vulnerable households. The government's concerted threefold strategy to uphold the export-led growth regime includes measures aimed at reducing firms' energy costs; in/direct measures aimed at controlling the rise of labour costs to prevent a wage-price spiral; and substantial state aid provided to ailing firms. The scope of state intervention in Germany's economy is unparalleled, entailing significant fiscal outlays for protective measures, made possible by Germany's advantageous sovereign refinancing capacity. Germany's economic activism risks jeopardising the EU single market due to extensive state aid, especially since Germany resists joint fiscal resource pooling for EU-wide industrial policy.</p>
                             <p class="mb-0 btn-row">
-                                <a href="./resources/policy/germany-energy-crisis-response.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Download PDF</a>
-                                <a href="https://leap.luiss.it/wp-content/uploads/2023/11/LUHNIP-Working-Paper-1-2023-.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank">Read online</a>
+                                <a href="./resources/policy/germany-energy-crisis-response.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_pdf">Download PDF</a>
+                                <a href="https://leap.luiss.it/wp-content/uploads/2023/11/LUHNIP-Working-Paper-1-2023-.pdf" class="btn btn-outline-dark btn-sm" rel="noopener" target="_blank" data-i18n="btn_read">Read online</a>
                             </p>
                         </div>
                     </div>
@@ -798,7 +815,7 @@
 
     <section class="py-5 bg-light" id="awards">
         <div class="container">
-            <h2 class="text-center"><strong>Awards and Prizes</strong></h2>
+            <h2 class="text-center"><strong data-i18n="h_awards">Awards and Prizes</strong></h2>
             <div class="accordion" id="awardsAccordion">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="aw1Heading">
@@ -858,32 +875,38 @@
 
     <section class="py-5" id="teaching">
         <div class="container">
-            <h2 class="text-center pb-3"><strong>Current Teaching</strong></h2>
+            <h2 class="text-center pb-3"><strong data-i18n="h_teaching">Current Teaching</strong></h2>
             <h5 class="fw-bold">The Political Economy of Europe and China in the New Multipolar World Order</h5>
-            <ul><li>EU4B5 &middot; MSc LSE-Fudan Double Degree in the Global Political Economy of China and Europe &middot; <i>London School of Economics</i><br>from 2026/2027</li></ul>
+            <ul><li>EU4B5 &middot; MSc LSE-Fudan Double Degree in the Global Political Economy of China and Europe &middot; <i>London School of Economics</i><br><span data-i18n="t_from">from 2026/2027</span></li></ul>
             <h5 class="fw-bold">Models of Capitalism</h5>
             <ul><li><a href="https://www.lse.ac.uk/resources/calendar2025-2026/courseGuides/EU/2025_EU443.htm" target="_blank" rel="noopener">EU443</a> &middot; MSc Political Economy of Europe &middot; <i>London School of Economics</i><br>2024/2025, 2025/2026, 2026/2027</li></ul>
             <h5 class="fw-bold">Industrial Policy: Leading the Green and Digital Transitions</h5>
-            <ul><li><a href="https://www.lse.ac.uk/study-at-lse/summer-schools/summer-school/courses/business-and-management/mg203" target="_blank" rel="noopener">SS-MG203</a> &middot; <i>LSE Summer School, European Institute</i><br>Summer 2025, Summer 2026</li></ul>
+            <ul><li><a href="https://www.lse.ac.uk/study-at-lse/summer-schools/summer-school/courses/business-and-management/mg203" target="_blank" rel="noopener">SS-MG203</a> &middot; <i>LSE Summer School, European Institute</i><br><span data-i18n="t_summer">Summer 2025, Summer 2026</span></li></ul>
         </div>
     </section>
 
     <section class="py-5 bg-light" id="outreach">
         <div class="container">
-            <h2 class="text-center"><strong>Outreach in the Media</strong></h2>
+            <h2 class="text-center"><strong data-i18n="h_outreach">Outreach in the Media</strong></h2>
             <ul>
                 <li><a href="https://www.repubblica.it/economia/2026/06/03/news/politica_industriale_ecco_l_assente_del_pnrr-425378398/" rel="noopener" target="_blank">Politica industriale, ecco l&#x27;assente del PNRR (con A. Aspide, L. Mascioli)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>la Repubblica</i>, 3 giugno 2026</small></li>
+                <li><a href="https://www.repubblica.it/economia/2026/05/14/news/tante_parole_pochi_soldi_zero_idee_cosi_l_italia_dimentica_scuola_e_formazione-425345915/" rel="noopener" target="_blank">Tante parole, pochi soldi, zero idee: così l’Italia dimentica scuola e formazione (con N. Durazzi, S. Tonelli)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>la Repubblica</i>, 14 maggio 2026</small></li>
                 <li><a href="https://www.lemonde.fr/en/opinion/article/2026/04/28/european-union-industrial-policy-is-making-a-comeback-on-the-continent_6752915_23.html" rel="noopener" target="_blank">European Union industrial policy is making a comeback on the continent (con P. Dermine)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Le Monde</i>, 28 aprile 2026</small></li>
                 <li><a href="https://www.lemonde.fr/idees/article/2026/04/23/union-europeenne-la-politique-industrielle-est-de-retour-sur-le-continent_6682780_3232.html" rel="noopener" target="_blank">Union européenne: la politique industrielle est de retour sur le continent (con P. Dermine)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Le Monde</i>, 23 aprile 2026</small></li>
                 <li><a href="https://www.lecho.be/opinions/general/opinion-politique-industrielle-europeenne-le-paradoxe-qui-bloque-l-europe/10656452.html" rel="noopener" target="_blank">Politique industrielle européenne: le paradoxe qui bloque l&#x27;Europe (con P. Dermine)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>L&#x27;Echo</i>, 22 aprile 2026</small></li>
                 <li><a href="https://www.ilsole24ore.com/art/come-l-integrazione-monetaria-ha-trasformato-crescita-regionale-italiana-AIlOYatB" rel="noopener" target="_blank">Come l&#x27;integrazione monetaria ha trasformato la crescita regionale italiana (con L. Baccaro, S. Hadziabdic)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 17 marzo 2026</small></li>
                 <li><a href="https://24plus.ilsole24ore.com/art/come-uscire-dall-impasse-aiuti-stato-senza-spazio-fiscale-AIGQytGB" rel="noopener" target="_blank">Come uscire dall&#x27;impasse sugli aiuti di Stato senza spazio fiscale (con P. Dermine)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 9 febbraio 2026</small></li>
+                <li><a href="https://www.repubblica.it/economia/2026/02/02/news/l_appello_di_panetta_e_il_nodo_irrisolto_del_terziario_italiano-425128297/" rel="noopener" target="_blank">L’appello di Panetta e il nodo irrisolto del terziario italiano (con N. Durazzi)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>la Repubblica</i>, 2 febbraio 2026</small></li>
                 <li><a href="https://www.repubblica.it/economia/2025/12/01/news/la_rivoluzione_degli_aiuti_di_stato_cosi_la_ue_fa_politica_industriale_senza_un_bilancio-425007872/" rel="noopener" target="_blank">La rivoluzione degli aiuti di Stato: così la UE fa politica industriale senza un bilancio (con F. Bulfone, T. Seidl)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>la Repubblica</i>, 1 dicembre 2025</small></li>
+                <li><a href="https://www.repubblica.it/economia/2025/11/27/news/un_indice_per_misurare_il_capitalismo_verde_l_europa_a_due_velocita-425007995/" rel="noopener" target="_blank">Un indice per misurare il “capitalismo verde”: l’Europa a due velocità (con L. Cigna, N. Durazzi)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>la Repubblica</i>, 27 novembre 2025</small></li>
                 <li>Molti robot, pochi ingegneri? Il rischio italiano nella corsa all&#x27;economia della conoscenza<br><small><i>Il Sole 24 Ore</i>, 5 settembre 2025</small></li>
                 <li>Politica industriale UE ok sull&#x27;ambiente ma poco competitiva<br><small><i>Il Sole 24 Ore</i>, 21 agosto 2025</small></li>
                 <li><a href="https://www.ilsole24ore.com/art/le-due-facce-una-possibile-politica-industriale-italiana-AH8BFjsB" rel="noopener" target="_blank">Le due facce di una possibile politica industriale italiana (con G. F. Esposito)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 25 luglio 2025</small></li>
                 <li><a href="https://24plus.ilsole24ore.com/art/la-politica-industriale-europea-competitivita-e-coesione-AH3Q4QkB" rel="noopener" target="_blank">La politica industriale europea tra competitività e coesione</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 17 luglio 2025</small></li>
-                <li>Perché investire su università e formazione per far funzionare la politica industriale<br><small><i>Repubblica Affari &amp; Finanza</i>, 15 maggio 2025</small></li>
+                <li><a href="https://www.repubblica.it/economia/2025/05/15/news/perche_investire_su_universita_e_formazione_per_far_funzionare_la_politica_industriale-424202736/" rel="noopener" target="_blank">Perché investire su università e formazione per far funzionare la politica industriale</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Repubblica Affari &amp; Finanza</i>, 15 maggio 2025</small></li>
+                <li><a href="https://24plus.ilsole24ore.com/art/un-sistema-unico-l-accesso-finanziamenti-industriali-europei-AG1GJr8C" rel="noopener" target="_blank">Un sistema unico per l’accesso ai finanziamenti industriali europei (con M. Simoni)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 26 febbraio 2025</small></li>
+                <li><a href="https://www.ilsole24ore.com/art/un-segnale-d-allarme-che-l-europa-non-puo-piu-ignorare-AF6Ipq0D" rel="noopener" target="_blank">Un segnale d’allarme che l’Europa non può più ignorare (con V. Meliciani)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 20 settembre 2024</small></li>
+                <li><a href="https://www.repubblica.it/economia/2024/05/21/news/litalia_fa_un_passo_nella_filiera_dei_semiconduttori-422962856/" rel="noopener" target="_blank">L’Italia fa un passo nella filiera dei semiconduttori (con L. Moretti)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>la Repubblica</i>, 22 maggio 2024</small></li>
                 <li><a href="https://www.ilsole24ore.com/art/sfide-e-compromessi-sostegno-nuova-politica-industriale-ue-AFyihbDC" rel="noopener" target="_blank">Sfide e compromessi nel sostegno della nuova politica industriale UE (con V. Meliciani)</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>Il Sole 24 Ore</i>, 3 gennaio 2024</small></li>
                 <li><a href="https://blogs.lse.ac.uk/europpblog/2023/10/16/the-return-of-inflation-and-three-meanings-of-wage-restraint/" rel="noopener" target="_blank">The return of inflation and three meanings of wage restraint</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>LSE EUROPP Blog</i>, 16 October 2023</small></li>
                 <li><a href="https://makronom.de/lohnzurueckhaltung-der-inflationsschub-setzt-die-eurozone-einem-brutalen-bestandstest-aus-45133" rel="noopener" target="_blank">Der Inflationsschub setzt die Eurozone einem brutalen Bestandstest aus</a> <img alt="" height="10" src="./icons/box-arrow-up-right.svg" width="10" /><br><small><i>MAKRONOM Blog</i>, 12 October 2023</small></li>
@@ -901,12 +924,12 @@
 
     <section class="py-5 text-center" id="contacts">
         <div class="container">
-            <h2 class="text-center pb-3"><strong>Contacts</strong></h2>
+            <h2 class="text-center pb-3"><strong data-i18n="h_contacts">Contacts</strong></h2>
             <div class="row gy-3">
                 <div class="col-md">
-                    <h4>Address</h4>
+                    <h4 data-i18n="c_address">Address</h4>
                     <p><strong><i>London School of Economics and Political Science</i></strong><br>
-                    <small><a href="https://maps.app.goo.gl/D14YC7zLaJqRT6rq9" class="link-dark" target="_blank" rel="noopener">LSE Centre Building (CBG)<br>Houghton St. London WC2A 2AE</a></small><br>Room CBG.6.05</p>
+                    <small><a href="https://maps.app.goo.gl/D14YC7zLaJqRT6rq9" class="link-dark" target="_blank" rel="noopener">LSE Centre Building (CBG)<br>Houghton St. London WC2A 2AE</a></small><br><span data-i18n="c_room">Office Room CBG.6.05</span></p>
                 </div>
                 <div class="col-md">
                     <h4>Email</h4>
@@ -919,9 +942,50 @@
 </main>
 
 <footer class="bg-dark py-5 text-white text-center">
-    <p class="my-0">&copy; 2024-2026 Donato Di Carlo. All rights reserved.</p>
+    <p class="my-0">&copy; 2024-2026 Donato Di Carlo. <span data-i18n="footer_rights">All rights reserved.</span></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script data-goatcounter="https://dicarlo.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var IT = {"nav_about": "Profilo", "nav_research": "Ricerca", "nav_policy": "Policy", "nav_awards": "Premi", "nav_teaching": "Didattica", "nav_outreach": "Divulgazione", "nav_contacts": "Contatti", "role": "Professore assistente di Economia politica", "founder": "Direttore", "h_about": "Profilo", "h_research": "Ricerca accademica", "h_policy": "Ricerca e rapporti di policy", "h_awards": "Premi e riconoscimenti", "h_teaching": "Didattica", "h_outreach": "Presenza sui media", "h_contacts": "Contatti", "research_sub": "Articoli sottoposti a revisione paritaria e capitoli di volume, organizzati per filone di ricerca", "stream1": "1. Economia politica e politica industriale", "stream2": "2. Continuità e cambiamento nei modelli europei di capitalismo", "stream3": "3. Mercati del lavoro comparati e sistemi di relazioni industriali e determinazione salariale", "about1": "Sono <i>Assistant Professor</i> di Economia politica presso lo European Institute della London School of Economics and Political Science e Direttore del Luiss Hub for New Industrial Policy and Economic Governance (LUHNIP), un Hub interdisciplinare che promuove la ricerca, il dibattito di policy e l’impegno pubblico sui temi della politica industriale e della governance economica in Europa e in Italia.", "about2": "Come studioso di Economia politica comparata (CPE), il mio lavoro si articola in tre filoni di ricerca:", "about3": "I miei lavori sono stati pubblicati su riviste internazionali tra cui <i>Governance, Perspectives on Politics, Politics &amp; Society, Regulation &amp; Governance, Socio-Economic Review</i> e hanno ricevuto riconoscimenti dalla European Union Studies Association (EUSA), dal Council for European Studies (CES) e dal Max Planck Institute for the Study of Societies (MPIfG).", "about4": "Prima di entrare alla LSE, sono stato Lecturer in Economia politica alla Luiss Guido Carli di Roma (2023–2024), Senior Researcher presso il Max Planck Institute for the Study of Societies di Colonia (2020–2023) e Max Weber Fellow presso il Dipartimento di Scienze politiche e sociali dell’Istituto Universitario Europeo (2020–2021). Ho inoltre ricoperto il ruolo di consulente economico esterno del Gabinetto del Sindaco di Roma (2021–2023), operando al punto d’incontro tra ricerca accademica e politica economica. Ho conseguito un dottorato di ricerca in Economia politica europea presso il Max Planck Institute for the Study of Societies (2015–2019).", "ol1": "L’economia politica e la politica industriale;", "ol2": "Continuità e cambiamento nei modelli europei di capitalismo;", "ol3": "Mercati del lavoro comparati e sistemi di relazioni industriali e determinazione salariale.", "card_interests": "Interessi di ricerca", "card_education": "Formazione", "int1": "Politica industriale europea e italiana", "int2": "Integrazione europea e governance economica", "int3": "Varietà di capitalismo e modelli/regimi di crescita", "int4": "Mercati del lavoro, relazioni industriali e sistemi di contrattazione collettiva", "int5": "Regolazione economica", "int6": "Economia politica del turismo", "edu1": "Dottorato di ricerca, <i>Max Planck Institute for the Study of Societies</i><br>Colonia 2019", "edu2": "Master di II livello in Public Policy, <i>Collegio Carlo Alberto</i><br>Torino 2015", "edu3": "MSc in Political Economy of Europe, <i>London School of Economics</i><br>Londra 2014", "edu4": "Laurea triennale in Amministrazione pubblica e Governo, <i>Università di Teramo</i><br>Teramo 2013", "t_from": "dal 2026/2027", "t_summer": "Estate 2025, Estate 2026", "c_address": "Indirizzo", "c_room": "Ufficio CBG.6.05", "footer_rights": "Tutti i diritti riservati.", "btn_pdf": "Scarica PDF", "btn_cite": "Scarica citazione", "btn_read": "Leggi online", "btn_get": "Trova il volume qui"};
+
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var EN = {};
+  nodes.forEach(function(n){ EN[n.getAttribute('data-i18n')] = n.innerHTML; });
+  function setActive(lang){
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-set-lang')===lang);
+    });
+  }
+  function apply(lang){
+    nodes.forEach(function(n){
+      var k=n.getAttribute('data-i18n');
+      n.innerHTML = (lang==='it' && IT[k]!=null) ? IT[k] : EN[k];
+    });
+    document.documentElement.lang = lang;
+    document.body.setAttribute('data-lang', lang);
+    setActive(lang);
+  }
+  function choose(lang){ apply(lang); try{ localStorage.setItem('lang', lang); }catch(e){} }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){
+    b.addEventListener('click', function(){ choose(b.getAttribute('data-set-lang')); });
+  });
+  var stored=null; try{ stored=localStorage.getItem('lang'); }catch(e){}
+  if(stored){ apply(stored); }
+  else {
+    apply('en');
+    fetch('https://get.geojs.io/v1/ip/country.json').then(function(r){return r.json();}).then(function(d){
+      var x=null; try{ x=localStorage.getItem('lang'); }catch(e){}
+      if(!x){ apply((d && d.country==='IT') ? 'it' : 'en'); }
+    }).catch(function(){
+      var x=null; try{ x=localStorage.getItem('lang'); }catch(e){}
+      if(!x && (navigator.language||'').toLowerCase().indexOf('it')===0){ apply('it'); }
+    });
+  }
+})();
+</script>
 </body>
 </html>
